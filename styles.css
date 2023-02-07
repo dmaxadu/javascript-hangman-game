@@ -11,6 +11,16 @@
     background-color: #363537;
 }
 
+.hangman {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30vh;
+    background-repeat: no-repeat;
+}
+
 .secretWord {
     display: flex;
     flex-direction: row;

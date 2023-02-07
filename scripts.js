@@ -1,8 +1,12 @@
 const keyboard = document.querySelector('.keyboard');
 const secretWordDiv = document.querySelector('.secretWord');
 const categoryDiv = document.querySelector('.category');
-const buttons = document.querySelectorAll('button');
+const buttons = document.getElementsByClassName('key');
+const secretLetters = document.getElementsByClassName('letter');
 const keys = "qwertyuiopasdfghjklçzxcvbnm".split("");
+let mistakes = 0;
+let found = 0;
+
 const nomes = [
     'MARIA',
     'ANA',
@@ -156,10 +160,13 @@ const createKeyboard = () => {
     for(var i = 0; i < keys.length; i++){
         createKey(keys[i].toUpperCase());
     }
+
+    for(var i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener('click', handlePressedKey);
+    }
 }
 
 const createSecretWord = () => {
-    createKeyboard()
     const wordAndCategory = chooseWord();
     const word = wordAndCategory[0];
     const category = wordAndCategory[1];
@@ -167,31 +174,73 @@ const createSecretWord = () => {
     
     
     for(var i = 0; i < word.length; i++){
-        space = document.createElement('div');
+        const space = document.createElement('div');
         letter = document.createElement('p');
         space.className = 'secretLetter';
         letter.className = 'letter'
         letter.innerHTML = word.slice(i, i+1)
-        // letter.style.display = 'none'
+        letter.style.display = 'none'
         letter.setAttribute('id', i)
         secretWordDiv.appendChild(space);
         space.appendChild(letter)
 
     }
-    Array.from(keys).forEach((key)=>{
-        key.addEventListener("click", (e)=>{
-            if(word.includes(e.target.innerHTML)){
-                console.log("acertou")
-            }
-            else{
-                console.log("errou")
-            }
-        })
-    })
     
     categoryDiv.innerHTML = category;
     console.log(word)
+}
+
+const loadGame = () => {
+    createKeyboard();
+    createSecretWord();
+}
+
+const handleHangman = (mistakes) => {
+    const hangmanImg = document.getElementById('hangmanImg');
+    hangmanImg.setAttribute('src', 'images/forca0'+ mistakes +'.png');
+}
+
+const alertWindow = (mensagem) =>{
+    alert(mensagem)
+}
+
+const winnerWindow = () => {
+    alertWindow("Você ganhou")
+    location.reload()
+}
+
+const loserWindow = () => {
+    alertWindow("Você perdeu")
+    location.reload()
+}
+
+const handlePressedKey = (event) => {
+    console.log(event.target.innerHTML);
+    for(var i = 0; i < secretLetters.length; i++){
+        if(event.target.innerHTML === secretLetters[i].innerHTML){
+            console.log("acertou");
+            secretLetters[i].style.display = 'flex';
+            found++;
+            console.log("found:", found)
+        }
+    }
+
+    if(found == 0){
+        mistakes = mistakes + 1;
+        handleHangman(mistakes);
+        console.log("found depois do if:", found);
+        console.log("mistakes:", mistakes)
+    }
+
+    if(mistakes >= 6){
+        mistakes = 0;
+        setTimeout(loserWindow, 300)
+    }
+
+    if(found == secretLetters.length){
+        setTimeout(winnerWindow, 300)
+    }
 
 }
 
-createSecretWord()
+loadGame()
