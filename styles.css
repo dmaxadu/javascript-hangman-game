@@ -1,0 +1,81 @@
+* {
+    font-family: 'Schoolbell', cursive;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #363537;
+}
+
+.secretWord {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+    height: 6vh;
+    gap: 10px
+}
+
+.secretLetter {
+    width: 50px;
+    height: 50px;
+    border-bottom: solid 2px #2FBF71;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter {
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(9, 3vh);
+    grid-template-rows: repeat(4, 3vh);
+    justify-content: center;
+    gap: 30px;
+    margin-top: 5%;
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 32px;
+    background: #363537;
+    box-shadow:  5px 5px 10px #2f2e30,
+                -5px -5px 10px #3d3c3e;
+    color: #2FBF71;
+    font-weight: 700;
+    transition: all ease 300ms;
+    text-shadow: 2px 4px 8px rgba(0,0,0,0.33);
+}
+
+.key:hover {
+    background: #2f2e30;
+    box-shadow: inset 5px 5px 10px #2f2e30,
+                inset -5px -5px 10px #3d3c3e;
+    cursor: pointer;
+}
+
+.category {
+    color: #2FBF71;
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 2px 4px 8px rgba(0,0,0,0.33);
+    cursor: default;
+    transition: all ease 300ms;
+}
+
+.category:hover {
+    transform: scale(1.1);
+}
