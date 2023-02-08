@@ -6,6 +6,7 @@ const secretLetters = document.getElementsByClassName('letter');
 const keys = "qwertyuiopasdfghjklçzxcvbnm".split("");
 let mistakes = 0;
 let found = 0;
+let oldFound = 0;
 
 const nomes = [
     'MARIA',
@@ -151,7 +152,6 @@ const chooseWord = () => {
 const createKey = (k) => {
     const key = document.createElement('button');
     key.className = 'key';
-    // key.setAttribute('onClick', 'letterFunction');
     key.innerHTML = k;
     keyboard.appendChild(key);
 }
@@ -177,17 +177,16 @@ const createSecretWord = () => {
         const space = document.createElement('div');
         letter = document.createElement('p');
         space.className = 'secretLetter';
-        letter.className = 'letter'
-        letter.innerHTML = word.slice(i, i+1)
-        letter.style.display = 'none'
-        letter.setAttribute('id', i)
+        letter.className = 'letter';
+        letter.innerHTML = word.slice(i, i+1);
+        letter.style.display = 'none';
+        letter.setAttribute('id', i);
         secretWordDiv.appendChild(space);
-        space.appendChild(letter)
+        space.appendChild(letter);
 
     }
     
     categoryDiv.innerHTML = category;
-    console.log(word)
 }
 
 const loadGame = () => {
@@ -201,7 +200,7 @@ const handleHangman = (mistakes) => {
 }
 
 const alertWindow = (mensagem) =>{
-    alert(mensagem)
+    alert(mensagem);
 }
 
 const winnerWindow = () => {
@@ -221,16 +220,15 @@ const handlePressedKey = (event) => {
             console.log("acertou");
             secretLetters[i].style.display = 'flex';
             found++;
-            console.log("found:", found)
+            console.log("found:", found);
         }
     }
-
-    if(found == 0){
+    if(found == 0 || oldFound == found){
         mistakes = mistakes + 1;
         handleHangman(mistakes);
-        console.log("found depois do if:", found);
-        console.log("mistakes:", mistakes)
     }
+
+    oldFound = found;
 
     if(mistakes >= 6){
         mistakes = 0;
