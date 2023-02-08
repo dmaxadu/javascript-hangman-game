@@ -217,13 +217,10 @@ const loserWindow = () => {
 }
 
 const handlePressedKey = (event) => {
-    console.log(event.target.innerHTML);
     for(var i = 0; i < secretLetters.length; i++){
         if(event.target.innerHTML === secretLetters[i].innerHTML){
-            console.log("acertou");
             secretLetters[i].style.display = 'flex';
             found++;
-            console.log("found:", found);
         }
     }
     if(found == 0 || oldFound == found){
