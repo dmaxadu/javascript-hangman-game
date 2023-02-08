@@ -3,6 +3,9 @@ const secretWordDiv = document.querySelector('.secretWord');
 const categoryDiv = document.querySelector('.category');
 const buttons = document.getElementsByClassName('key');
 const secretLetters = document.getElementsByClassName('letter');
+const popup = document.querySelector('.popup');
+const popupText = document.querySelector('.popupText');
+const popupImg = document.querySelector('.popupImg');
 const keys = "qwertyuiopasdfghjklçzxcvbnm".split("");
 let mistakes = 0;
 let found = 0;
@@ -146,9 +149,7 @@ const chooseWord = () => {
         const word = comidas[wordIndex];
         return [word, category];
     }
-
 }
-
 const createKey = (k) => {
     const key = document.createElement('button');
     key.className = 'key';
@@ -187,6 +188,7 @@ const createSecretWord = () => {
     }
     
     categoryDiv.innerHTML = category;
+    console.log(word)
 }
 
 const loadGame = () => {
@@ -199,18 +201,19 @@ const handleHangman = (mistakes) => {
     hangmanImg.setAttribute('src', 'images/forca0'+ mistakes +'.png');
 }
 
-const alertWindow = (mensagem) =>{
-    alert(mensagem);
+const popupWindow = (mensagem, img) =>{
+    popup.style.display = 'flex';
+    popupText.innerHTML = mensagem;
+    popupImg.setAttribute('src', 'images/'+ img)
 }
 
 const winnerWindow = () => {
-    alertWindow("Você ganhou")
-    location.reload()
+    popupWindow("Você ganhou", "trophy.png")
 }
 
 const loserWindow = () => {
-    alertWindow("Você perdeu")
-    location.reload()
+    popupWindow("Você perdeu", "forca06.png")
+    
 }
 
 const handlePressedKey = (event) => {
@@ -241,4 +244,7 @@ const handlePressedKey = (event) => {
 
 }
 
+const refresh = () => {
+    window.location.reload()
+}
 loadGame()

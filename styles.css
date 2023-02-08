@@ -75,6 +75,8 @@
     box-shadow: inset 5px 5px 10px #2f2e30,
                 inset -5px -5px 10px #3d3c3e;
     cursor: pointer;
+    font-size: 35px;
+    color: #DA7E5D;
 }
 
 .category {
@@ -88,4 +90,48 @@
 
 .category:hover {
     transform: scale(1.1);
+}
+
+.popup {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 60vh;
+    background-color: #2f2e30;
+    border: solid 2px #2FBF71;
+    border-radius: 50px;
+    gap: 20px;
+    box-shadow: 10px 10px 59px 4px rgba(47,191,113,0.59);
+}
+
+.popupText {
+    color: white;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.popupImg {
+    height: 50%;
+}
+
+.popupBtn {
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2FBF71;
+    border: solid 2px transparent;
+    transition: all ease 300ms;
+}
+
+.popupBtn:hover {
+    background-color: #2f2e30;
+    border: solid 2px #2FBF71;
+    color: #2FBF71;
+    transform: scale(1.1);
+    cursor: pointer;
 }
