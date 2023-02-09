@@ -165,13 +165,13 @@
     }
 
     .key, .keyDisabled {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         font-size: 15px;
     }
 
     .keyboard {
-        gap: 10px;
+        gap: 15px;
         grid-template-columns: repeat(9, 3vh);
         grid-template-rows: repeat(4, 3vh);
     }
@@ -181,7 +181,18 @@
         padding-bottom: 30px;
     }
 
+    .secretLetter {
+        padding-top: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .letter {
+        padding-bottom: 30px;
+        font-size: 20px;
+    }
+
     .hangman {
-        padding-bottom: 80px;
+        padding-bottom: 120px;
     }
 }
