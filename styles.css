@@ -161,7 +161,7 @@
         height: 60vh;
     }
     .popupText {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .key, .keyDisabled {
@@ -194,5 +194,10 @@
 
     .hangman {
         padding-bottom: 120px;
+    }
+
+    .popupBtn {
+        margin-top: 20px;
+        font-size: 20px;
     }
 }
