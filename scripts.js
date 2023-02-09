@@ -208,11 +208,11 @@ const popupWindow = (mensagem, img) =>{
 }
 
 const winnerWindow = () => {
-    popupWindow("Você ganhou", "trophy.png")
+    popupWindow("🎉 Você Ganhou! 🎉", "trophy.png")
 }
 
 const loserWindow = () => {
-    popupWindow("Você perdeu", "forca06.png")
+    popupWindow("Você Perdeu! 🥺", "forca06.png")
     
 }
 
@@ -232,12 +232,16 @@ const handlePressedKey = (event) => {
 
     if(mistakes >= 6){
         mistakes = 0;
-        setTimeout(loserWindow, 300)
+        setTimeout(loserWindow, 800)
     }
 
     if(found == secretLetters.length){
-        setTimeout(winnerWindow, 300)
+        setTimeout(winnerWindow, 800)
     }
+
+    event.target.setAttribute('disabled', '');
+    event.target.className = 'keyDisabled'
+    console.log(found, mistakes)
 
 }
 

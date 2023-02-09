@@ -70,6 +70,20 @@
     text-shadow: 2px 4px 8px rgba(0,0,0,0.33);
 }
 
+.keyDisabled{
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 32px;
+    background: #2f2e30;
+    box-shadow:  5px 5px 10px #2f2e30,
+                -5px -5px 10px #3d3c3e;
+    color: #DA7E5D;
+    font-weight: 700;
+    transition: all ease 300ms;
+    text-shadow: 2px 4px 8px rgba(0,0,0,0.33);
+}
+
 .key:hover {
     background: #2f2e30;
     box-shadow: inset 5px 5px 10px #2f2e30,
@@ -126,6 +140,7 @@
     background-color: #2FBF71;
     border: solid 2px transparent;
     transition: all ease 300ms;
+    color: #2f2e30;
 }
 
 .popupBtn:hover {
@@ -134,4 +149,32 @@
     color: #2FBF71;
     transform: scale(1.1);
     cursor: pointer;
+}
+
+@media (max-width: 400px){
+    .container {
+        width: 100%;
+    }
+
+    .popup {
+        width: 40vh;
+        height: 60vh;
+    }
+    .popupText {
+        font-size: 30px;
+    }
+
+    .key, .keyDisabled {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .keyboard {
+        gap: 10px
+    }
+
+    .secretWord {
+        width: 380px;
+    }
 }
