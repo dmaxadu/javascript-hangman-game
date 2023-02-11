@@ -131,6 +131,13 @@
     height: 50%;
 }
 
+.popupWord {
+    text-align: center;
+    color: #2FBF71;
+    font-size: 20px;
+    font-weight: 700;
+}
+
 .popupBtn {
     margin-top: 50px;
     font-size: 30px;

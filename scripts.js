@@ -6,10 +6,12 @@ const secretLetters = document.getElementsByClassName('letter');
 const popup = document.querySelector('.popup');
 const popupText = document.querySelector('.popupText');
 const popupImg = document.querySelector('.popupImg');
+const popupWord = document.querySelector('.popupWord');
 const keys = "qwertyuiopasdfghjklçzxcvbnm".split("");
 let mistakes = 0;
 let found = 0;
 let oldFound = 0;
+let word = '';
 
 const nomes = [
     'MARIA',
@@ -169,7 +171,7 @@ const createKeyboard = () => {
 
 const createSecretWord = () => {
     const wordAndCategory = chooseWord();
-    const word = wordAndCategory[0];
+    word = wordAndCategory[0];
     const category = wordAndCategory[1];
     const keys = document.querySelectorAll('button');
     
@@ -201,18 +203,19 @@ const handleHangman = (mistakes) => {
     hangmanImg.setAttribute('src', 'images/forca0'+ mistakes +'.png');
 }
 
-const popupWindow = (mensagem, img) =>{
+const popupWindow = (mensagem, img, word) =>{
     popup.style.display = 'flex';
     popupText.innerHTML = mensagem;
+    popupWord.innerHTML = "A palavra era: " + word;
     popupImg.setAttribute('src', 'images/'+ img)
 }
 
 const winnerWindow = () => {
-    popupWindow("🎉 Você Ganhou! 🎉", "trophy.png")
+    popupWindow("🎉 Você Ganhou! 🎉", "trophy.png", '')
 }
 
-const loserWindow = () => {
-    popupWindow("Você Perdeu! 🥺", "forca06.png")
+const loserWindow = (word) => {
+    popupWindow("Você Perdeu! 🥺", "forca06.png", word)
     
 }
 
@@ -232,7 +235,7 @@ const handlePressedKey = (event) => {
 
     if(mistakes >= 6){
         mistakes = 0;
-        setTimeout(loserWindow, 800)
+        setTimeout(loserWindow, 800, word)
     }
 
     if(found == secretLetters.length){
