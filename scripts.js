@@ -203,19 +203,19 @@ const handleHangman = (mistakes) => {
     hangmanImg.setAttribute('src', 'images/forca0'+ mistakes +'.png');
 }
 
-const popupWindow = (mensagem, img, word) =>{
+const popupWindow = (mensagem, img) =>{
     popup.style.display = 'flex';
     popupText.innerHTML = mensagem;
-    popupWord.innerHTML = "A palavra era: " + word;
     popupImg.setAttribute('src', 'images/'+ img)
 }
 
 const winnerWindow = () => {
-    popupWindow("🎉 Você Ganhou! 🎉", "trophy.png", '')
+    popupWindow("🎉 Você Ganhou! 🎉", "trophy.png")
 }
 
 const loserWindow = (word) => {
-    popupWindow("Você Perdeu! 🥺", "forca06.png", word)
+    popupWindow("Você Perdeu! 🥺", "forca06.png")
+    popupWord.innerHTML = "A palavra era: " + word;
     
 }
 
